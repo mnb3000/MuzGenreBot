@@ -1,9 +1,8 @@
-﻿using MuzGenreBot.Models.Commands;
 using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 
-namespace MuzGenreBot.Models.Commands
+namespace TelegramBot.Models.Commands
 {
     public class StartCommand : Command
     {
@@ -14,7 +13,7 @@ namespace MuzGenreBot.Models.Commands
             if (message.Type != Telegram.Bot.Types.Enums.MessageType.Text)
                 return false;
 
-            return message.Text.Contains(this.Name);
+            return message.Text.Contains(Name);
         }
 
         public override async Task Execute(Message message, TelegramBotClient botClient)

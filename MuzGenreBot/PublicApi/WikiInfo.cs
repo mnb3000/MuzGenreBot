@@ -5,6 +5,7 @@ using Genbox.Wikipedia.Misc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using WikiDotNet;
 
@@ -12,6 +13,16 @@ namespace MuzGenreBot.PublicApi
 {
     class Program1
     {
+        public static string StripHTML(string input)
+        {
+            if (input != null)
+            {
+                return Regex.Replace(input, "<.*?>", String.Empty);
+            }
+
+            return "";
+        }
+        
         static public string WikiInfo(string find)
         {
             WikiSearchSettings searchSettings = new WikiSearchSettings
@@ -40,7 +51,7 @@ namespace MuzGenreBot.PublicApi
 
             foreach (Search s in results.Search)
             {
-                res = $" ]] {s.TitleSnippet} [[ {s.Snippet} ";
+                res = $" ]] {s.TitleSnippet} [[ {StripHTML(s.Snippet)} ";
             }
 
             return res;

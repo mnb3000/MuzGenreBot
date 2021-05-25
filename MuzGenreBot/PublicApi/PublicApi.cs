@@ -21,13 +21,14 @@ namespace MuzGenreBot.PublicApi
 {
     class Program
     {
+        
         //static void Main(string[] args)
         //{
         //    Program.RandomGenre();
         //    Program.RandomStory();
         //    Program.SpotifyApi("Blues");
         //}
-        static public string RandomGenre() // random genre
+        static public async Task<string> RandomGenre() // random genre
         {
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(
                 "https://binaryjazz.us/wp-json/genrenator/v1/genre/");
