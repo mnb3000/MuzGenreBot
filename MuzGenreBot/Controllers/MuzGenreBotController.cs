@@ -47,9 +47,9 @@ namespace MuzGenreBot.Controllers
         }
 
         [HttpGet("randomgenre")]
-        public string GetRG()
+        public async Task<string> GetRG()
         {
-            return PublicApi.Program.RandomGenre();
+            return await PublicApi.Program.RandomGenre();
         }
 
         [HttpGet("randomstory")]
@@ -131,32 +131,5 @@ namespace MuzGenreBot.Controllers
 
         //    return this.Ok();
         //}
-    }
-    [Route("api/message/update")]
-    public class MessageController : Controller
-    {
-        // GET api/values
-        
-
-        // POST api/values
-        [HttpPost]
-        public async Task<OkResult> Post([FromBody] Update update)
-        {
-            if (update == null) return Ok();
-
-            var commands = Bot.Commands;
-            var message = update.Message;
-            var botClient = await Bot.GetBotClientAsync();
-
-            foreach (var command in commands)
-            {
-                if (command.Contains(message))
-                {
-                    await command.Execute(message, botClient);
-                    break;
-                }
-            }
-            return Ok();
-        }
     }
 }
