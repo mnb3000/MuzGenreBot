@@ -6,10 +6,10 @@ using Telegram.Bot.Types;
 
 namespace TelegramBot.Models.Commands
 {
-    public class RandomGenreCommand : Command
+    public class RandomStoryCommand : Command
     {
         private static readonly HttpClient client = new HttpClient();
-        public override string Name => @"/randomGenre";
+        public override string Name => @"/randomStory";
 
         public override bool Contains(Message message)
         {
@@ -23,9 +23,8 @@ namespace TelegramBot.Models.Commands
         {
             var chatId = message.Chat.Id;
 
-            var data = await client.GetStringAsync("http://localhost:51181/muzgenrebot/randomgenre");
+            var data = await client.GetStringAsync("http://localhost:51181/muzgenrebot/randomstory");
             await botClient.SendTextMessageAsync(chatId, data, parseMode: Telegram.Bot.Types.Enums.ParseMode.Markdown);
-            
         }
     }
 }

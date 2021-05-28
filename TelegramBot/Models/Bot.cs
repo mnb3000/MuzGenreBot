@@ -31,6 +31,9 @@ namespace TelegramBot.Models
             commandsList = new List<Command>();
             commandsList.Add(new RandomGenreCommand());
             commandsList.Add(new StartCommand());
+            commandsList.Add(new RandomStoryCommand());
+            commandsList.Add(new SpotifyPlaylistsCommand());
+            commandsList.Add(new WikiInfoCommand());
             //TODO: Add more commands
             
             bot.StartReceiving(

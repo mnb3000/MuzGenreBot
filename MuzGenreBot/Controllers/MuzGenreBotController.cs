@@ -41,9 +41,9 @@ namespace MuzGenreBot.Controllers
         }
 
         [HttpGet("f&{genre}")]
-        public string GetG(string genre)
+        public async Task<string> GetG(string genre)
         {
-            return PublicApi.Program1.Wiki(genre);
+            return await PublicApi.Program1.Wiki(genre);
         }
 
         [HttpGet("randomgenre")]
@@ -53,15 +53,15 @@ namespace MuzGenreBot.Controllers
         }
 
         [HttpGet("randomstory")]
-        public string GetRS()
+        public async Task<string> GetRS()
         {
-            return PublicApi.Program.RandomStory();
+            return await PublicApi.Program.RandomStory();
         }
 
         [HttpGet("sp&{find}")]
-        public string GetSP(string find)
+        public async Task<string> GetSP(string find)
         {
-            return PublicApi.Program.SpotifyApi(find);
+            return await PublicApi.Program.SpotifyApi(find);
         }
 
         [HttpGet("{id}")]

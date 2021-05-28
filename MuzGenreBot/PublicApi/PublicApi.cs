@@ -40,7 +40,7 @@ namespace MuzGenreBot.PublicApi
             response.Close();
             return ReadData;
         }
-        static public string RandomStory() // random story
+        static public async Task<string> RandomStory() // random story
         {
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(
                 "https://binaryjazz.us/wp-json/genrenator/v1/story/1");
@@ -52,7 +52,7 @@ namespace MuzGenreBot.PublicApi
             response.Close();
             return ReadData;
         }
-        static public string SpotifyApi(string s) // playlists 
+        static public async Task<string> SpotifyApi(string s) // playlists 
         {
            
                 Environment.SetEnvironmentVariable("SpotifyApiClientId", "3b7334201f9a420d9c7e16fdc98ba24a");
